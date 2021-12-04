@@ -29,10 +29,9 @@ const corsOptions = {
 app.use(cors());
 app.use(cors(corsOptions));
 
-
-app.get('/api/', (req, res) => {
-    res.json({ success: false, message: "OK" });
-});
+/** Router */
+const router = require('./server/app/routes');
+router(app);
 
 // --> Add this
 if (process.env.NODE_ENV === 'production') {
