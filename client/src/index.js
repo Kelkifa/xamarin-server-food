@@ -1,40 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
-import Navbar from './components/Navbar';
-import reportWebVitals from './reportWebVitals';
 import './components/customScss/index.scss';
 
 import {
+  Route,
   BrowserRouter as Router,
-  Switch,
-  Route
+  Switch
 } from "react-router-dom";
 
-// Views
-import Home from './views/Home.js';
 import Anime from './views/Anime.js';
+import App from './App';
 import Document from './views/Document.js';
+import Home from './views/Home.js';
+import Navbar from './components/Navbar';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import Test from './views/Test.js';
+import reportWebVitals from './reportWebVitals';
+
+// Views
+
+
+
+
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <Navbar></Navbar>
-      <div className="fluid">
-        <Switch>
-          <Route path="/document" component={Document} />
-          <Route path="/anime" component={Anime} />
-          <Route path="/test" component={Test} />
-          <Route path="/home" component={Home} />
-          <Route path="/" component={Home} />
-          <Route>
-            <h1>Not match</h1>
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
