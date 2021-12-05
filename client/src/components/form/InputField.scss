@@ -1,0 +1,14 @@
+.input-field {
+	label {
+		display: block;
+		width: 100%;
+	}
+
+	&__input {
+		width: 100%;
+	}
+
+	&__error {
+		color: red;
+	}
+}

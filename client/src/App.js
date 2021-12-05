@@ -1,12 +1,11 @@
+import 'components/customScss/base.scss';
+
 import React, { useEffect } from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
-import PropTypes from 'prop-types';
+import Food from 'features/food/Food';
+import NotFound from 'components/NotFound/NotFound';
 import { Suspense } from 'react';
-
-App.propTypes = {
-
-};
 
 function App(props) {
 
@@ -25,7 +24,8 @@ function App(props) {
         <Suspense fallback={<div>Loading ... </div>}>
             <Router>
                 <Switch>
-                    <Route />
+                    <Route path="/food" component={Food} />
+                    <Route component={NotFound} />
                 </Switch>
             </Router>
         </Suspense>

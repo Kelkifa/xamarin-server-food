@@ -2,10 +2,10 @@ import axios from 'axios';
 import queryString from 'query-string';
 
 // require('dotenv').config();
-const productURL = 'https://xamarin-food.herokuapp.com/api';
-// const devURL = 'http://localhost:8080/api';
+// const productURL = 'https://xamarin-food.herokuapp.com/api';
+const devURL = 'http://localhost:8080/api';
 const axiosClient = axios.create({
-    baseURL: productURL,
+    baseURL: devURL,
     headers: {
         'content-type': 'application/json',
     },

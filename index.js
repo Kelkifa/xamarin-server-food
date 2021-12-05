@@ -13,7 +13,7 @@ app.use(express.json());
 // --> Add this
 // ** MIDDLEWARE ** //
 const cors = require('cors');
-const whitelist = ['http://localhost:3000', 'http://localhost:8080', 'https://shrouded-journey-38552.herokuapp.com']
+const whitelist = ['http://localhost:3000', 'http://localhost:8080', 'https://xamarin-food.herokuapp.com/']
 const corsOptions = {
     origin: function (origin, callback) {
         console.log("** Origin of request " + origin)
