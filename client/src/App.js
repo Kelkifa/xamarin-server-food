@@ -1,17 +1,19 @@
 import React, { useEffect } from 'react';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
-import authApi from './api/authApi';
+import { Suspense } from 'react';
 
 App.propTypes = {
 
 };
 
 function App(props) {
+
     useEffect(() => {
         const fetchAuth = async () => {
             try {
-                await authApi.login({});
+                // await authApi.login({});
             } catch (err) {
 
             }
@@ -20,9 +22,13 @@ function App(props) {
         fetchAuth();
     }, [])
     return (
-        <div>
-            app hello
-        </div>
+        <Suspense fallback={<div>Loading ... </div>}>
+            <Router>
+                <Switch>
+                    <Route />
+                </Switch>
+            </Router>
+        </Suspense>
     );
 }
 
