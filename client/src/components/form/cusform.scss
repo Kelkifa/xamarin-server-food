@@ -15,7 +15,24 @@
 		column-gap: 8px;
 	}
 
-	button {
+	&__button {
 		margin-top: 30px;
+
+		&__btn {
+			background-color: rgb(21, 128, 216);
+			color: white;
+			text-align: center;
+			font-size: 15px;
+			outline: none;
+			width: 100%;
+
+			border-radius: 3px;
+			border: solid 1px black;
+			cursor: pointer;
+			padding: 5px 0;
+		}
+		button {
+			margin-top: 15px;
+		}
 	}
 }

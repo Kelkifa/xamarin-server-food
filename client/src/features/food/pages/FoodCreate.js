@@ -10,6 +10,7 @@ import React from 'react';
 import foodApi from 'api/foodApi';
 import { foodCreate } from '../foodSlice';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 
 FoodCreate.prototype = {
     initialFood: PropTypes.object,
@@ -30,6 +31,7 @@ const schema = yup.object().shape({
 });
 function FoodCreate({ initialFood }) {
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const initialValues = {
         name: initialFood ? initialFood.name : "",
@@ -130,7 +132,12 @@ function FoodCreate({ initialFood }) {
                             />
                         </div>
 
-                        <button type="submmit">submit</button>
+                        <div className="cusform__button">
+                            {initialFood && (
+                                <div className="cusform__button__btn" onClick={() => { history.goBack() }}>back</div>
+                            )}
+                            <button className="cusform__button__btn" type="submmit">submit</button>
+                        </div>
 
                     </form>)
                 }}

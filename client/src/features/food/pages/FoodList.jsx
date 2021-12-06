@@ -8,6 +8,7 @@ import foodApi from "api/foodApi";
 FoodList.propTypes = {};
 
 function FoodList(props) {
+	const [isLoading, setIsLoading] = useState(true);
 	const [foodList, setFoodList] = useState([]);
 
 	const headerList = [
@@ -30,6 +31,8 @@ function FoodList(props) {
 				if (response.success) {
 					setFoodList(response.response);
 				}
+
+				setIsLoading(false);
 			} catch (err) {
 				console.log(err);
 			}
@@ -48,6 +51,14 @@ function FoodList(props) {
 			alert("Lỗi rồi không xoá được");
 		}
 	};
+
+	if (isLoading)
+		return (
+			<div>
+				<h2 style={{textAlign: "center"}}>Danh sách food</h2>
+				<div>Loading ...</div>
+			</div>
+		);
 
 	return (
 		<div>

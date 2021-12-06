@@ -11,7 +11,7 @@ class FoodController {
     async getJson(req, res) {
         try {
             const response = await foodModel.find({});
-            return res.json({ success: true, message: 'successfully', response })
+            return res.json(response);
         } catch (err) {
             console.log(err);
             return res.json({ success: false, message: "internal server" });
