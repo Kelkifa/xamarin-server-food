@@ -20,6 +20,7 @@ FoodCreate.defaultProps = {
 
 const schema = yup.object().shape({
     name: yup.string().required("this field is required"),
+    image: yup.string().required("this field is required"),
     description: yup.string().required("this field is required"),
     production: yup.string().required("this field is required"),
     cost: yup.number().required("this field is required"),
@@ -32,6 +33,7 @@ function FoodCreate({ initialFood }) {
 
     const initialValues = {
         name: initialFood ? initialFood.name : "",
+        image: initialFood ? initialFood.image : "",
         description: initialFood ? initialFood.description : "",
         production: initialFood ? initialFood.production : "",
         cost: initialFood ? initialFood.cost : "",
@@ -84,6 +86,13 @@ function FoodCreate({ initialFood }) {
                             label="Mô tả"
                             placeholder="mô tả sản phẩm"
                             type="textarea"
+
+                            component={InputField}
+                        />
+                        <FastField
+                            name="image"
+                            label="Hình"
+                            placeholder="Link ảnh"
 
                             component={InputField}
                         />
