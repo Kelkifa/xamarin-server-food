@@ -3,6 +3,22 @@ const foodModel = require('../models/foods');
 class FoodController {
 
     /**
+     * [GET] /api/food/json
+     * @param {*} req 
+     * @param {*} res
+     * @returns json api data web
+     */
+    async getJson(req, res) {
+        try {
+            const response = await foodModel.find({});
+            return res.json({ success: true, message: 'successfully', response })
+        } catch (err) {
+            console.log(err);
+            return res.json({ success: false, message: "internal server" });
+        }
+    }
+
+    /**
      * [GET] /api/food/get
      * @param {*} req 
      * @param {*} res 
@@ -12,7 +28,8 @@ class FoodController {
         try {
             const response = await foodModel.find({});
             return res.json({ success: true, message: "successfully", response });
-        } catch {
+        } catch (err) {
+            console.log(err);
             return res.json({ success: false, message: "internal server" });
         }
     }
