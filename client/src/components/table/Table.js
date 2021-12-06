@@ -1,4 +1,4 @@
-import "./table.scss";
+import "./Table.scss";
 
 import PropTypes from "prop-types";
 
@@ -15,6 +15,7 @@ Table.defaultProps = {
     rowHover: "rgba(175, 205, 236, 0.603)",
 };
 
+// children <tr> <td>...</td> </tr>
 function Table(props) {
     // PROPS
     const { headerList, children, rowHighlight, rowHover } = props;

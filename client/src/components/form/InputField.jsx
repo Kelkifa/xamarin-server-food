@@ -22,7 +22,7 @@ function InputField({form, field, type, label, placeholder}) {
 			<label>{label}</label>
 			{type == "textarea" ? (
 				<textarea
-					clasName="input-field__input"
+					className="input-field__input"
 					name={field.name}
 					onChange={field.onChange}
 					onBlur={field.onBlur}

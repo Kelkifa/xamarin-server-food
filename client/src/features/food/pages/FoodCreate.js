@@ -5,9 +5,18 @@ import * as yup from 'yup';
 import { FastField, Formik } from 'formik';
 
 import InputField from 'components/form/InputField';
+import PropTypes from "prop-types";
 import React from 'react';
+import foodApi from 'api/foodApi';
 import { foodCreate } from '../foodSlice';
 import { useDispatch } from 'react-redux';
+
+FoodCreate.prototype = {
+    initialFood: PropTypes.object,
+}
+FoodCreate.defaultProps = {
+    initialFood: undefined,
+}
 
 const schema = yup.object().shape({
     name: yup.string().required("this field is required"),
@@ -18,22 +27,28 @@ const schema = yup.object().shape({
     minMass: yup.string().required("this field is required"),
     maxMass: yup.string().required("this field is required"),
 });
-function FoodCreate(props) {
+function FoodCreate({ initialFood }) {
     const dispatch = useDispatch();
 
     const initialValues = {
-        name: "",
-        description: "",
-        production: "",
-        cost: "",
-        unit: "",
-        minMass: "",
-        maxMass: "",
+        name: initialFood ? initialFood.name : "",
+        description: initialFood ? initialFood.description : "",
+        production: initialFood ? initialFood.production : "",
+        cost: initialFood ? initialFood.cost : "",
+        unit: initialFood ? initialFood.unit : "",
+        minMass: initialFood ? initialFood.minMass : "",
+        maxMass: initialFood ? initialFood.maxMass : "",
     }
 
     const handleSubmit = async (values) => {
         try {
-            await dispatch(foodCreate({ data: values }));
+            if (initialFood) {
+                const response = await foodApi.update({ updatedData: values, foodId: initialFood._id });
+                alert(response.message);
+                return;
+            }
+            const response = await foodApi.create({ data: values });
+            alert(response.message);
         } catch (err) {
             console.log(err);
         }
@@ -106,9 +121,6 @@ function FoodCreate(props) {
                             />
                         </div>
 
-                        <div className="cusform__notifice">
-                            them thanh cong
-                        </div>
                         <button type="submmit">submit</button>
 
                     </form>)
