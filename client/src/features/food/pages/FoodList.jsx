@@ -14,6 +14,7 @@ function FoodList(props) {
 	const headerList = [
 		"Stt",
 		"Tên",
+		"Loại",
 		"Hình",
 		"Mô tả",
 		"Nơi sản xuất",
@@ -75,6 +76,7 @@ function FoodList(props) {
 					<tr key={food._id}>
 						<td>{index}</td>
 						<td>{food.name}</td>
+						<td>{food.type}</td>
 						<td>
 							<img
 								style={{width: "100px", height: "70px"}}

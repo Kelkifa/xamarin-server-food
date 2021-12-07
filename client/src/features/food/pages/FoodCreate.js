@@ -21,6 +21,7 @@ FoodCreate.defaultProps = {
 
 const schema = yup.object().shape({
     name: yup.string().required("this field is required"),
+    type: yup.string().required("this field is required"),
     image: yup.string().required("this field is required"),
     description: yup.string().required("this field is required"),
     production: yup.string().required("this field is required"),
@@ -30,12 +31,13 @@ const schema = yup.object().shape({
     maxMass: yup.string().required("this field is required"),
 });
 function FoodCreate({ initialFood }) {
-    const dispatch = useDispatch();
+
     const history = useHistory();
 
     const initialValues = {
         name: initialFood ? initialFood.name : "",
         image: initialFood ? initialFood.image : "",
+        type: initialFood ? initialFood.type : "",
         description: initialFood ? initialFood.description : "",
         production: initialFood ? initialFood.production : "",
         cost: initialFood ? initialFood.cost : "",
@@ -91,13 +93,22 @@ function FoodCreate({ initialFood }) {
 
                             component={InputField}
                         />
-                        <FastField
-                            name="image"
-                            label="Hình"
-                            placeholder="Link ảnh"
+                        <div className="cusform__row-c2">
+                            <FastField
+                                name="image"
+                                label="Hình"
+                                placeholder="Link ảnh"
 
-                            component={InputField}
-                        />
+                                component={InputField}
+                            />
+                            <FastField
+                                name="type"
+                                label="Loại"
+                                placeholder="Loại sản phẩm"
+
+                                component={InputField}
+                            />
+                        </div>
 
                         <div className="cusform__row-c2">
                             <FastField

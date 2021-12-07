@@ -7,6 +7,7 @@ const Schema = mongoose.Schema;
 const foods = new Schema(
     {
         name: { type: String },
+        type: { type: String },
         image: { type: String },
         description: { type: String },
         production: { type: String },
