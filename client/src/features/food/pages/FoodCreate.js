@@ -8,8 +8,6 @@ import InputField from 'components/form/InputField';
 import PropTypes from "prop-types";
 import React from 'react';
 import foodApi from 'api/foodApi';
-import { foodCreate } from '../foodSlice';
-import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 
 FoodCreate.prototype = {
@@ -30,6 +28,7 @@ const schema = yup.object().shape({
     minMass: yup.string().required("this field is required"),
     maxMass: yup.string().required("this field is required"),
 });
+
 function FoodCreate({ initialFood }) {
 
     const history = useHistory();
@@ -46,7 +45,7 @@ function FoodCreate({ initialFood }) {
         maxMass: initialFood ? initialFood.maxMass : "",
     }
 
-    const handleSubmit = async (values) => {
+    const handleSubmit = async (values, { resetForm }) => {
         try {
             if (initialFood) {
                 const response = await foodApi.update({ updatedData: values, foodId: initialFood._id });
@@ -54,6 +53,8 @@ function FoodCreate({ initialFood }) {
                 return;
             }
             const response = await foodApi.create({ data: values });
+            resetForm({ values: "" });
+
             alert(response.message);
         } catch (err) {
             console.log(err);
@@ -63,7 +64,8 @@ function FoodCreate({ initialFood }) {
         <div className="food-create">
             <Formik onSubmit={handleSubmit} validationSchema={schema} initialValues={initialValues}>
                 {(formikProps) => {
-                    const { handleSubmit } = formikProps;
+                    const { handleSubmit, setFieldValue } = formikProps;
+                    // console.log(setFieldValue);
 
                     return (<form onSubmit={handleSubmit} className="cusform">
                         <h2 className="cusform__title">Tạo food</h2>
