@@ -1,0 +1,15 @@
+###
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+    "username":"huan",
+    "password":"Kelkifa123",
+    "fullname":"Pham Long Huan"
+}
+
+
+
+###
+
+GET http://localhost:8080/api/food/json?s=Cà

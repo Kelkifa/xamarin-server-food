@@ -6,13 +6,13 @@ const Schema = mongoose.Schema;
 
 const foods = new Schema(
     {
-        name: { type: String },
-        type: { type: String },
-        image: { type: String },
-        description: { type: String },
-        production: { type: String },
-        cost: { type: Number },
-        unit: { type: String },
+        name: { type: String, required: true },
+        type: { type: String, required: true },
+        image: { type: String, required: true },
+        description: { type: String, required: true },
+        production: { type: String, required: true },
+        cost: { type: Number, required: true },
+        unit: { type: String, required: true },
         minMass: { type: String, default: "0kg" },
         maxMass: { type: String, default: "0kg" }
     },

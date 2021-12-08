@@ -9,8 +9,9 @@ class FoodController {
      * @returns json api data web
      */
     async getJson(req, res) {
+        const findData = req.query.s;
         try {
-            const response = await foodModel.find({});
+            const response = await foodModel.find(findData ? { name: { $regex: findData, $options: 'i' } } : {});
             return res.json(response);
         } catch (err) {
             console.log(err);
