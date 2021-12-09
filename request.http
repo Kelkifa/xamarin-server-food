@@ -13,3 +13,7 @@ Content-Type: application/json
 ###
 
 GET http://localhost:8080/api/food/json?s=Cà
+
+###
+
+GET http://localhost:8080/api/food/custom

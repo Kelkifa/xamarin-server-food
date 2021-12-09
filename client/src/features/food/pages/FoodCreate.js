@@ -24,6 +24,7 @@ const schema = yup.object().shape({
     description: yup.string().required("this field is required"),
     production: yup.string().required("this field is required"),
     cost: yup.number().required("this field is required"),
+    discount: yup.number().required("this field is required"),
     unit: yup.string().required("this field is required"),
     minMass: yup.string().required("this field is required"),
     maxMass: yup.string().required("this field is required"),
@@ -40,6 +41,7 @@ function FoodCreate({ initialFood }) {
         description: initialFood ? initialFood.description : "",
         production: initialFood ? initialFood.production : "",
         cost: initialFood ? initialFood.cost : "",
+        discount: initialFood ? initialFood.discount : "",
         unit: initialFood ? initialFood.unit : "",
         minMass: initialFood ? initialFood.minMass : "",
         maxMass: initialFood ? initialFood.maxMass : "",
@@ -64,12 +66,11 @@ function FoodCreate({ initialFood }) {
         <div className="food-create">
             <Formik onSubmit={handleSubmit} validationSchema={schema} initialValues={initialValues}>
                 {(formikProps) => {
-                    const { handleSubmit, setFieldValue } = formikProps;
-                    // console.log(setFieldValue);
+                    const { handleSubmit } = formikProps;
 
                     return (<form onSubmit={handleSubmit} className="cusform">
                         <h2 className="cusform__title">Tạo food</h2>
-                        <div className="cusform__row-c2">
+                        <div className="cusform__row-c3">
                             <FastField
                                 name="name"
                                 label="Tên food"
@@ -82,6 +83,14 @@ function FoodCreate({ initialFood }) {
                                 name="cost"
                                 label="Giá"
                                 placeholder="vd: 100"
+
+                                component={InputField}
+                            />
+
+                            <FastField
+                                name="discount"
+                                label="Giảm giá (%)"
+                                placeholder="vd: 50"
 
                                 component={InputField}
                             />

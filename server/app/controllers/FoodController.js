@@ -83,6 +83,8 @@ class FoodController {
     async update(req, res) {
         const { updatedData, foodId } = req.body;
 
+        console.log(updatedData);
+
         if (!updatedData || !foodId) {
             return res.json({ success: false, message: "bad request" });
         }
@@ -111,6 +113,22 @@ class FoodController {
 
         } catch (err) {
             return res.json({ success: false, message: 'internal server' });
+        }
+    }
+
+    /**
+     * [GET] /api/food/custom
+     * @param {*} req 
+     * @param {*} res 
+     * @returns 
+     */
+    async customChange(req, res) {
+        try {
+            await foodModel.updateMany({}, { discount: 0 });
+
+            return res.json({ success: true, message: 'successfully' });
+        } catch (error) {
+            return res.json({ success: false, message: "internal server" });
         }
     }
 

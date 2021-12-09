@@ -12,6 +12,7 @@ const foods = new Schema(
         description: { type: String, required: true },
         production: { type: String, required: true },
         cost: { type: Number, required: true },
+        discount: { type: Number, default: 0 },
         unit: { type: String, required: true },
         minMass: { type: String, default: "0kg" },
         maxMass: { type: String, default: "0kg" }

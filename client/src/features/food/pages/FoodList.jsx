@@ -19,6 +19,7 @@ function FoodList(props) {
 		"Mô tả",
 		"Nơi sản xuất",
 		"Giá",
+		"Giảm giá",
 		"Đơn vị",
 		"KL tối thiểu",
 		"KL Tối đa",
@@ -87,6 +88,7 @@ function FoodList(props) {
 						<td>{food.description}</td>
 						<td>{food.production}</td>
 						<td>{food.cost}</td>
+						<td>{food.discount}</td>
 						<td>{food.unit}</td>
 						<td>{food.minMass}</td>
 						<td>{food.maxMass}</td>
