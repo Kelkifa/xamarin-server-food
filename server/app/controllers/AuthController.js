@@ -36,6 +36,7 @@ class AuthController {
      */
     async register(req, res) {
         const { fullname, username, password } = req.body;
+        console.log(req.body);
         if (!username || !password) return res.json({ success: false, message: 'bad request' });
         try {
             await userModel.create({ username, password, fullname });
