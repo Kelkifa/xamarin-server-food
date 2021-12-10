@@ -35,11 +35,11 @@ class AuthController {
      * @returns 
      */
     async register(req, res) {
-        const { fullname, username, password } = req.body;
+        const { username, password } = req.body;
         console.log(req.body);
         if (!username || !password) return res.json({ success: false, message: 'bad request' });
         try {
-            await userModel.create({ username, password, fullname });
+            await userModel.create({ username, password });
             return res.json({ success: true, message: 'successfully' });
         } catch (error) {
             if (error.name === 'MongoError' && error.code === 11000) {
