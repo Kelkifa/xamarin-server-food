@@ -1,7 +1,7 @@
 
 
 function getUserIdMidleware(req, res, next) {
-    req.body.userId = undefined;
+    // req.body.userId = undefined;
     const authHeader = req.header('Authorization');
     const userId = authHeader && authHeader.split(' ')[1]
 
