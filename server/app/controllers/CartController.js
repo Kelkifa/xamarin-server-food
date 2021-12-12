@@ -50,6 +50,24 @@ class CartController {
             return res.json({ success: false, message: 'internal server' });
         }
     }
+
+
+    /**
+     * [POST] /api/cart/remove
+     * @param {*} req {cartId}
+     * @param {*} res 
+     */
+    async removeCart(req, res) {
+        const { cartId } = req.body;
+        try {
+            await cartModel.deleteOne({ _id: cartId });
+            return res.json({ success: true, message: 'successfully' });
+        } catch (err) {
+            console.log(`[Cart remove err]`, err);
+            return res.json({ success: false, message: "internal server" });
+        }
+
+    }
 }
 
 module.exports = new CartController;
