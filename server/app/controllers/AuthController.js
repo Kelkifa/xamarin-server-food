@@ -20,7 +20,7 @@ class AuthController {
                 return res.json({ success: false, message: "Tài khoản hoặc mật khẩu không chính xác" });
 
 
-            return res.json({ success: true, message: 'successfully' });
+            return res.json({ success: true, message: 'successfully', response: foundUser._id });
         } catch (err) {
             console.log(err);
             return res.json({ success: false, message: "internal server" });
