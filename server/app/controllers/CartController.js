@@ -10,9 +10,10 @@ class CartController {
      */
     async getFoodList(req, res) {
         const { userId } = req.body;
+        console.log(req.body);
         if (!userId) return res.json({ success: false, message: "Bạn chưa đăng nhập" });
         try {
-            const response = await cartModel.find({ userId }).sort({ createdAt: 'desc' }).populate('food');
+            const response = await cartModel.find({ userId }).sort({ createdAt: 'desc' }).populate('food').select('food soLuong');
             return res.json({ success: true, message: 'successfully', response });
         } catch (err) {
             return res.json({ success: false, message: 'internal error' });
