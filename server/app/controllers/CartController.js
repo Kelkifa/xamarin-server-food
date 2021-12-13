@@ -28,15 +28,15 @@ class CartController {
      * @returns 
      */
     async addCart(req, res) {
-        const { userId, foodId, soLuong = 1 } = req.body;
+        const { userId, food, soLuong = 1 } = req.body;
 
         if (!userId) return res.json({ success: false, message: 'Bạn chưa đăng nhập' });
-        if (!foodId) return res.json({ success: false, message: 'bad request' });
+        if (!food) return res.json({ success: false, message: 'bad request' });
 
         try {
             const newCart = {
                 userId,
-                foodId,
+                food: foodId,
                 soLuong
             }
 
