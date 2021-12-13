@@ -65,7 +65,8 @@ class CartController {
         if (cartIdList.length == 0) return res.json({ success: false, message: 'bad request' });
         try {
             await cartModel.deleteMany({ _id: { $in: idList } });
-            return res.json({ success: true, message: 'successfully' });
+            const response = await cartModel.find({ userId }).sort({ createdAt: 'desc' }).populate('food');
+            return res.json({ success: true, message: 'successfully', response });
         } catch (err) {
             console.log(`[Cart remove err]`, err);
             return res.json({ success: false, message: "internal server" });
