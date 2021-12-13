@@ -36,7 +36,7 @@ class CartController {
         try {
             const newCart = {
                 userId,
-                food: foodId,
+                food,
                 soLuong
             }
 
