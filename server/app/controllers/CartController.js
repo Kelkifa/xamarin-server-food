@@ -58,7 +58,10 @@ class CartController {
      * @param {*} res 
      */
     async removeCart(req, res) {
-        const { cartId } = req.body;
+        const { cartIdList = [] } = req.body;
+        console.log(req.body);
+
+        if (cartIdList.length == 0) return res.json({ success: false, message: 'bad request' });
         try {
             await cartModel.deleteOne({ _id: cartId });
             return res.json({ success: true, message: 'successfully' });
