@@ -12,7 +12,7 @@ class CartController {
         const { userId } = req.body;
         if (!userId) return res.json({ success: false, message: "Bạn chưa đăng nhập" });
         try {
-            const response = await cartModel.find({ userId }).sort({ createdAt: 'desc' }).populate('food').select('food soLuong');
+            const response = await cartModel.find({ userId }).sort({ createdAt: 'desc' }).populate('food');
             console.log(response);
             return res.json({ success: true, message: 'successfully', response });
         } catch (err) {
