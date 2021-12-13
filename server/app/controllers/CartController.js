@@ -58,12 +58,13 @@ class CartController {
      * @param {*} res 
      */
     async removeCart(req, res) {
-        const { cartIdList = [] } = req.body;
-        console.log(req.body);
+        const { cartIdList = '[]', userId } = req.body;
 
+        const idList = JSON.parse(cartIdList);
+        console.log(idList);
         if (cartIdList.length == 0) return res.json({ success: false, message: 'bad request' });
         try {
-            await cartModel.deleteOne({ _id: cartId });
+            await cartModel.deleteMany({ _id: { $in: idList } });
             return res.json({ success: true, message: 'successfully' });
         } catch (err) {
             console.log(`[Cart remove err]`, err);

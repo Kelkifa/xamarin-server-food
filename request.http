@@ -24,12 +24,8 @@ GET http://localhost:8080/api/food/json?discount=desc
 
 
 ### cart get
-POST http://localhost:8080/api/cart/get
-Content-Type: application/json
+GET http://localhost:8080/api/cart/get
 
-{
-    "userId":"61b3138a6e0c8e00233e75ee"
-}
 
 
 ### cart add
@@ -38,6 +34,10 @@ Content-Type: application/json
 
 {
     "userId":"61b3138a6e0c8e00233e75ee",
-    "foodId":"61aec754db181d00237c9883",
+    "food":"61aec754db181d00237c9883",
     "soLuong":"2"
 }
+
+### remove cart
+
+POST http://localhost:8080/api/cart/remove
