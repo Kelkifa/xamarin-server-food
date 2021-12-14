@@ -35,7 +35,7 @@ class AuthController {
      * @returns 
      */
     async register(req, res) {
-        const { username, password } = req.body;
+        const { fullname, address, sdt, username, password } = req.body;
         console.log(req.body);
         if (!username || !password) return res.json({ success: false, message: 'bad request' });
         try {
