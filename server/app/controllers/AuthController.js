@@ -39,7 +39,7 @@ class AuthController {
         console.log(req.body);
         if (!username || !password) return res.json({ success: false, message: 'bad request' });
         try {
-            await userModel.create({ username, password });
+            await userModel.create({ fullname, address, sdt, username, password });
             return res.json({ success: true, message: 'successfully' });
         } catch (error) {
             if (error.name === 'MongoError' && error.code === 11000) {
