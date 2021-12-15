@@ -41,3 +41,14 @@ Content-Type: application/json
 ### remove cart
 
 POST http://localhost:8080/api/cart/remove
+
+
+### order create
+POST http://localhost:8080/api/order/create
+Content-Type: application/json
+
+{
+    "userId":"61b8b5a8ab4af30023b7a048",
+    "cartIdListJson":"[]"
+}
+

@@ -1,14 +1,14 @@
 
 
 function getUserIdMidleware(req, res, next) {
-    req.body.userId = undefined;
-    const authHeader = req.header('Authorization');
-    const userId = authHeader && authHeader.split(' ')[1]
+    // req.body.userId = undefined;
+    // const authHeader = req.header('Authorization');
+    // const userId = authHeader && authHeader.split(' ')[1]
 
-    if (!userId)
-        return res.json({ success: false, message: "Bạn chưa đăng nhập" });
+    // if (!userId)
+    //     return res.json({ success: false, message: "Bạn chưa đăng nhập" });
 
-    req.body.userId = userId;
+    // req.body.userId = userId;
     return next();
 }
 

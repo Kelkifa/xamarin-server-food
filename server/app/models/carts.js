@@ -11,7 +11,8 @@ const carts = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'foods'
         },
-        soLuong: { type: Number, default: 1 }
+        soLuong: { type: Number, default: 1 },
+        isOrder: { type: Boolean, default: false }
     },
     {
         timestamps: true
